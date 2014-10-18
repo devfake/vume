@@ -208,7 +208,7 @@ find($id);
 delete($id);
 
 // Get last inserted primary key. Useful for redirect to current created data.
-function id();
+id();
 ```
 
 Planned: Add more prefabricated methods.
