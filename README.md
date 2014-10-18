@@ -204,7 +204,6 @@ all();
 // Find data by primary key.
 find($id);
 
-
 // Delete model by primary key.
 delete($id);
 
