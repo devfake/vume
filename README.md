@@ -307,7 +307,7 @@ public function store()
     return back();
   }
 
-  return to('url);
+  return to('url');
 }
 ```
 
