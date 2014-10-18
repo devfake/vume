@@ -18,7 +18,7 @@ Current version: 0.1.0
 
 ##### Be careful
 
-This framework is intended only for small webapps and websites. Currently there are
+This framework is intended to work for small webapps and websites only. Currently there are
 
 * No User Authentication
 * No Caching
@@ -66,6 +66,16 @@ All config files are arrays. If you want to add a new config file, make sure tha
 
 Using `debug`, you can control whether error messages are displayed. Set it to `false` in production mode.
 Make `database` to `false` if you do not use a database. You can choose different environments for your database. They are stored in the `database.php`.
+
+##### How to use configs
+
+All configs are converted to constants. Use them case insensitive.
+
+```php
+// http://dev.vume/
+echo URL;
+echo url;
+```
 
 ## Controller
 
