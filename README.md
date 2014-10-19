@@ -62,7 +62,7 @@ return [
 ];
 ```
 
-All config files are arrays. If you want to add a new config file, make sure that the syntax is the same.
+All config files are returned arrays. If you want to add a new config file, make sure that the syntax is the same.
 
 Using `debug`, you can control whether error messages are displayed. Set it to `false` in production mode.
 Make `database` to `false` if you do not use a database. You can choose different environments for your database. They are stored in the `database.php`.
@@ -123,7 +123,9 @@ return $this->view('asoiaf')
   ->with('my_words', $words);
 ```
 
-Planned: Make second parameter optional and allow arrays for the first parameter.
+**Planned:**
+* Make second parameter optional.
+* Allow arrays for the first parameter.
 
 ##### Share data for all views
 
@@ -138,7 +140,8 @@ public function __construct()
 }
 ```
 
-Planned: Create option for **excepted** and **only** views.
+**Planned:**
+* Option for **excepted** and **only** views.
 
 ## Views
 
@@ -146,7 +149,8 @@ All view files are placed in the `resources/views` directory. If you load a view
 
 There is a **master** view. This is the structure & boilerplate of the html code. Your specific views are loaded into this file.
 
-Planned: Small template engine.
+**Planned:**
+* Small template engine.
 
 ## Model
 
@@ -211,7 +215,8 @@ delete($id);
 id();
 ```
 
-Planned: Add more prefabricated methods.
+**Planned:**
+* More prefabricated methods.
 
 ##### Models in controllers
 
@@ -261,7 +266,9 @@ $route->get('/api/{first}-{second}-{third}', 'APIController@update');
 
 In your methods you need to enter the same number of parameters. Name they as you want, but they must in the same order.
 
-Planned: Resources and Closures.
+**Planned:**
+* Resources.
+* Closures.
 
 ## Redirect
 
@@ -280,8 +287,8 @@ class TaskController extends vume\Controller {
     $task = new Task();
     
     if($task->delete($id)) {
-      return $this-redirect()->to('url');
-      // or return to('url');
+      return $this->redirect()->to('success url');
+      // or return to('success url');
     }
     
     return $this->redirect()->back();
@@ -307,7 +314,7 @@ public function store()
     return back();
   }
 
-  return to('url');
+  return to('success url');
 }
 ```
 
@@ -345,7 +352,7 @@ The helper function need the same value as `name=` in a input/textarea field.
 
 When a validation fails, it is a common way to redirect the user back to the form. But usually his other inputs would be empty.
 
-There is a helper function to avoid this: `inputOld()`.
+There is a helper function to avoid this: `inputOld()`:
 
 ```php
 <input type="text" name="title" placeholder="Required" value="<?php echo inputOld('title'); ?>">
@@ -353,13 +360,17 @@ There is a helper function to avoid this: `inputOld()`.
 <textarea name="description" placeholder="Required"><?php echo inputOld('description'); ?></textarea>
 ```
 
-If the field has no errors (e.g. by first load of this form), you can store a default value: `inputOld('name', 'default value')`.
+If the field has no errors (e.g. by first load of this form), you can store a default value: `inputOld('name', 'default value')`. The first parameter need the same value as `name=` from the input/textarea field.
 
-Planned: More validation rules. Improved array support. Add exceptions and only fields. Custom error messages.
+**Planned:**
+* More validation rules. 
+* Improved array support. 
+* Exceptions and only fields. 
+* Custom error messages.
 
 ## Sessions
 
-The framework has a small helper function for work with sessions.
+The framework has a helper function for work with sessions.
 
 ```php
 // $_SESSION['key'];
