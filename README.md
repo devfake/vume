@@ -266,7 +266,6 @@ $route->get('/api/{first}-{second}-{third}', 'APIController@update');
 
 In your methods you need to enter the same number of parameters. Name they as you want, but they must in the same order.
 
-<<<<<<< HEAD
 ##### Resource
 
 If you plan to make a typical RESTful webservice, you need a couple of routes. Don't write these over and over. Use `resource`:
@@ -299,11 +298,6 @@ $route->resource('lost', 'SeriesController');
 * Exceptions for `resource`.
 * Closures.
 * PUT, PATCH and DELETE.
-=======
-**Planned:**
-* Resources.
-* Closures.
->>>>>>> e62dbc561e2382875cd1d4c54f4209e7724b4568
 
 ## Redirect
 
