@@ -9,6 +9,7 @@
      */
     private $errors = [];
 
+
     /**
      * Validation for form posts.
      *

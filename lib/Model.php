@@ -8,6 +8,7 @@
 
     protected $db = null;
 
+
     /**
      * Associated table for model.
      *

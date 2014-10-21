@@ -9,6 +9,7 @@
      */
     private $data = [];
 
+
     /**
      * Add data to view.
      *

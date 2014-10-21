@@ -24,6 +24,7 @@
      */
     private $matches;
 
+
     /**
      * Unleash and run the router.
      */
@@ -53,7 +54,8 @@
         }
       }
 
-      throw new \RouteNotFoundException();
+      //throw new \RouteNotFoundException();
+      echo 'Route not found.';
     }
 
     /**
@@ -72,8 +74,6 @@
     public function get($pattern, $callback)
     {
       $this->routes['get'][$pattern] = $callback;
-
-      return $this;
     }
 
     /**
@@ -82,8 +82,24 @@
     public function post($pattern, $callback)
     {
       $this->routes['post'][$pattern] = $callback;
+    }
 
-      return $this;
+    /**
+     * Make resource routes.
+     */
+    public function resource($pattern, $callback = null)
+    {
+      $pattern = trim($pattern, '/');
+      $callback = $callback ?: ucfirst($pattern) . 'Controller';
+
+      $this->get($pattern, $callback . '@index');
+      $this->get($pattern . '/new', $callback . '@create');
+      $this->get($pattern . '/{id}/edit', $callback . '@change');
+      $this->get($pattern . '/{id}', $callback . '@show');
+
+      $this->post($pattern, $callback . '@store');
+      $this->post($pattern . '/{id}/delete', $callback . '@destroy');
+      $this->post($pattern . '/{id}', $callback . '@update');
     }
 
     /**
