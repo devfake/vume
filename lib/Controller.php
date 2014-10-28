@@ -10,7 +10,7 @@
      * You can use paths with dotnotation -> views.home or views/home.
      * Return views/home.php as default.
      */
-    protected function view($view)
+    public function view($view)
     {
       $view = str_replace('.', '/', $view);
       $viewPath = view_path . $view . '.php';
@@ -30,7 +30,7 @@
     /**
      * Share same data for all views.
      */
-    protected function share($name, $data = null)
+    public function share($name, $data = null)
     {
       session('vume_share.' . $name)->set($data);
     }
@@ -38,7 +38,7 @@
     /**
      * Validation for form posts.
      */
-    protected function validate($input)
+    public function validate($input)
     {
       return new Validate($input);
     }
@@ -46,7 +46,7 @@
     /**
      * Redirect to given url.
      */
-    protected function redirect()
+    public function redirect()
     {
       return new Redirect();
     }

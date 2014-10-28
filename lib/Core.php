@@ -4,8 +4,10 @@
 
   class Core {
 
+    /**
+     * Stores the current environment for the database.
+     */
     private $environment;
-
 
     /**
      * Start the complete logic.

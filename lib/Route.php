@@ -24,7 +24,6 @@
      */
     private $matches;
 
-
     /**
      * Unleash and run the router.
      */
@@ -33,24 +32,32 @@
       $this->uri = isset($_GET['url']) ? '/' . $_GET['url'] : '/';
 
       foreach($this->routes[$this->requestMethod()] as $pattern => $callback) {
-        list($controller, $action) = explode('@', $callback);
+
+        if( ! $this->isClosure($callback)) {
+          list($controller, $action) = explode('@', $callback);
+        }
 
         $pattern = '/' . trim($pattern, '/');
 
         if($this->match($pattern)) {
-          require controller_path . $controller . '.php';
-          $controller = new $controller();
+          if( ! $this->isClosure($callback)) {
+            require controller_path . $controller . '.php';
+            $controller = new $controller();
 
-          // Remove the element for complete uri.
-          array_shift($this->matches);
+            // Remove the element for complete uri.
+            array_shift($this->matches);
 
-          // Store possible matched parameter in a flat array
-          // for call it in call_user_func_array().
-          foreach($this->matches as $params => $value) {
-            $this->parameters[] = $value[0];
+            // Store possible matched parameter in a flat array
+            // for call it in call_user_func_array().F
+            foreach($this->matches as $params => $value) {
+              $this->parameters[] = $value[0];
+            }
+
+            return call_user_func_array([$controller, $action], $this->parameters);
           }
 
-          return call_user_func_array([$controller, $action], $this->parameters);
+          // Return the anonymous function.
+          return $callback(new Controller());
         }
       }
 
@@ -116,5 +123,12 @@
     private function requestMethod()
     {
       return strtolower($_SERVER['REQUEST_METHOD']);
+    }
+
+    /**
+     * Check if callback is a closure.
+     */
+    private function isClosure($callback) {
+      return is_object($callback);
     }
   }

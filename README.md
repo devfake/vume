@@ -14,7 +14,7 @@
 
 ## Overview
 
-Current version: 0.2.0
+Current version: 0.3.0
 
 ##### Be careful
 
@@ -294,9 +294,30 @@ If you want to call your controller something different, use the second paramete
 $route->resource('lost', 'SeriesController');
 ```
 
+##### Anonymous functions as callback
+
+Use anonymous functions as callback in your routings. Currently you **need** to pass a parameter. With them you can access your normal controller methods like `view()`, `share()` or `redirect()`.
+
+```php
+$route->get('/hello', function($c) {
+  return $c->view('home');
+});
+```
+
+If you need code auto completion for the available methods in your IDE, type hinting the full `Controller` class for the parameter:
+
+```php
+$route->get('/hello', function(vume\Controller $c) {
+  $url = 'example.com;
+  return $c->redirect()->to($url);
+});
+```
+
+**Warning:** Optional parameters are currently not supported.
+
 **Planned:**
 * Exceptions for `resource`.
-* Closures.
+* Parameters for anonymous functions.
 * PUT, PATCH and DELETE.
 
 ## Redirect
@@ -325,6 +346,8 @@ class TaskController extends vume\Controller {
   }
 }
 ```
+
+Note: The passed url is checked by correctness. So instead of `to('http://example.com')` you can write `to('example.com')`.
 
 ## Validation
 

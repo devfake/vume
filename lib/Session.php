@@ -29,7 +29,6 @@
      */
     private $keysForRemove;
 
-
     /**
      * Start session if required, get your keys and initialize the variables.
      */
