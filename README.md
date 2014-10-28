@@ -308,7 +308,7 @@ If you need code auto completion for the available methods in your IDE, type hin
 
 ```php
 $route->get('/hello', function(vume\Controller $c) {
-  $url = 'example.com;
+  $url = 'example.com';
   return $c->redirect()->to($url);
 });
 ```
