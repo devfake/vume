@@ -36,7 +36,7 @@
     {
       if(session_status() == PHP_SESSION_NONE) session_start();
 
-      $this->keys = explode($seperator, $keys);
+      $this->keys = $keys ? explode($seperator, $keys) : null;
       $this->keysForExists = $this->keys;
       $this->keysForRemove = $this->keys;
 
@@ -46,10 +46,13 @@
 
     /**
      * Get the requested session. If key does not exists, return a default value.
+     * If no key are passed, return the complete $_SESSION array.
      */
     public function get($default = null)
     {
-      if($this->exists()) {
+      if( ! $this->keys) {
+        return $_SESSION;
+      } elseif($this->exists()) {
         $this->createDeepSession();
 
         return $this->reference;
