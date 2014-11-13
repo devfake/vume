@@ -52,7 +52,9 @@
     {
       if( ! $this->keys) {
         return $_SESSION;
-      } elseif($this->exists()) {
+      }
+
+      if($this->exists()) {
         $this->createDeepSession();
 
         return $this->reference;
@@ -103,7 +105,9 @@
       foreach($array as $key => & $value) {
         if(is_array($value) && ! empty($value) && $key == $_key && ! empty($this->keysForExists)) {
           return $this->exists($value);
-        } elseif($key == $_key && empty($this->keysForExists)) {
+        }
+
+        if($key == $_key && empty($this->keysForExists)) {
           return true;
         }
       }
@@ -147,10 +151,10 @@
       foreach($array as $key => & $value) {
         if(is_array($value) && $key == $_key && ! empty($this->keysForRemove)) {
           return $this->removeKey($value);
-        } else {
-          if($key == $_key) {
-            unset($array[$key]);
-          }
+        }
+
+        if($key == $_key) {
+          unset($array[$key]);
         }
       }
     }
