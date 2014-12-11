@@ -6,7 +6,7 @@
    * PHP MVC Framework & Project Boilerplate.
    *
    * @author Viktor Geringer <devfakeplus@googlemail.com>
-   * @version 0.3.0
+   * @version 0.3.1
    * @license The MIT License (MIT)
    */
 
