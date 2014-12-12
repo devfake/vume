@@ -50,9 +50,12 @@
   /**
    * Alias for $_POST[].
    */
-  function input($input = null)
+  function input($input = null, $escape = true)
   {
     if($input) {
+      if($escape) {
+        return htmlspecialchars($_POST[$input], ENT_QUOTES, 'UTF-8');
+      }
       return $_POST[$input];
     }
 
