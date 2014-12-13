@@ -1,6 +1,9 @@
 /vendor
+/.idea
+
 composer.phar
 composer.lock
+/config/config.ini
+
 .DS_Store
 Thumbs.db
-/.idea

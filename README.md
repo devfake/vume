@@ -14,7 +14,7 @@
 
 ## Overview
 
-Current version: 0.3.2
+Current version: 0.3.3
 
 ##### Be careful
 
@@ -76,6 +76,40 @@ All configs are converted to constants. Use them case insensitive.
 echo URL;
 echo url;
 ```
+
+##### Sensitive data
+
+If you need to protect your sensitive configuration data, put a `config.ini` in your `config` folder.
+
+Example for a `config.ini`:
+
+```
+db_user = username
+db_pw = password
+db_host = host
+db_db = db
+```
+
+Set the value for the keys in your config files with `$configIni['data']`:
+
+```php
+return [
+
+  'development' => [
+
+    'driver' => 'mysql',
+    'host' => $configIni['db_host'],
+    'db' => $configIni['db_db'],
+    'user' => $configIni['db_user'],
+    'pw' => $configIni['db_pw']
+
+  ],
+  
+  ...
+];
+```
+
+The `config.ini` is stored in your `.gitignore` file.
 
 ## Controller
 

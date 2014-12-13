@@ -48,7 +48,11 @@
     private function scanConfigDir()
     {
       $configFiles = array_slice(scandir('../config/'), 2);
+      $configIni = parse_ini_file('../config/config.ini');
+
       foreach($configFiles as $configFile) {
+        if($configFile == 'config.ini') continue;
+
         $config = require '../config/' . $configFile;
         $this->setConfigs($config, $configFile);
       }
