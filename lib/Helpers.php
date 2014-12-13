@@ -48,7 +48,8 @@
   }
 
   /**
-   * Alias for $_POST[].
+   * Alias for htmlspecialchars($_POST[$input], ENT_QUOTES, 'UTF-8').
+   * Set the second parameter to false if you do not need escaping.
    */
   function input($input = null, $escape = true)
   {

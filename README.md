@@ -105,7 +105,7 @@ return [
 
   ],
   
-  ...
+  // ...
 ];
 ```
 
@@ -486,8 +486,9 @@ autoCache($file);
 // Alias for compact().
 c($name);
 
-// Alias for $_POST[].
-input($input = null);
+// Alias for htmlspecialchars($_POST[$input], ENT_QUOTES, 'UTF-8').
+// Set the second parameter to false if you do not need escaping.
+input($input = null, $escape = true);
 
 // Alias for redirect()->to().
 to($url);
