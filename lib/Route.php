@@ -62,7 +62,7 @@
       }
 
       //throw new \RouteNotFoundException();
-      echo 'Route not found.';
+      echo 'Route <strong>' . trim($this->uri, '/') . '</strong> not found.';
     }
 
     /**
