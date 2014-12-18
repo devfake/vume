@@ -1,4 +1,4 @@
-![vume](http://80.240.132.120/vume/github_head.jpg)
+![vume](http://80.240.132.120/vume/github_header.jpg)
 
 * [Overview](#overview)
 * [Get started](#get-started)
