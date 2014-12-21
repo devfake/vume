@@ -63,6 +63,7 @@
 
       //throw new \RouteNotFoundException();
       echo 'Route <strong>' . trim($this->uri, '/') . '</strong> not found.';
+      header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found', true, 404);
     }
 
     /**
