@@ -14,7 +14,7 @@
 
 ## Overview
 
-Current version: 0.3.5
+Current version: 0.3.6
 
 ##### Be careful
 
@@ -65,7 +65,7 @@ return [
 All config files are returned arrays. If you want to add a new config file, make sure that the syntax is the same.
 
 Using `debug`, you can control whether error messages are displayed. Set it to `false` in production mode.
-Make `database` to `false` if you do not use a database. You can choose different environments for your database. They are stored in the `database.php`.
+Set `database` to `false` if you do not use a database. You can choose different environments for your database. They are stored in the `database.php`.
 
 ##### How to use configs
 
@@ -79,7 +79,7 @@ echo url;
 
 ##### Sensitive data
 
-If you need to protect your sensitive configuration data, put a `config.ini` in your `config` folder.
+If you need to protect your sensitive configuration data, put a `config.ini` in your `config` folder. There is a `config.example.ini` in the folder.
 
 Example for a `config.ini`:
 
@@ -142,7 +142,7 @@ return $this->view('tasks.all');
 
 ##### Passing data to a view
 
-Concatenate the `with()` method. First parameter is the **name** you want to access in your view. The second parameter is the **data**.
+Concatenate the `with()` method. First argument is the **name** you want to access in your view. The second argument is the **data**.
 ```php
 return $this->view('home')->with('name', $data);
 ```
@@ -158,8 +158,8 @@ return $this->view('asoiaf')
 ```
 
 **Planned:**
-* Make second parameter optional.
-* Allow arrays for the first parameter.
+* Make second argument optional.
+* Allow arrays for the first argument.
 
 ##### Share data for all views
 
@@ -206,7 +206,7 @@ class Tasks extends vume\Model {
 }
 ```
 
-The model class used [PDO](http://de2.php.net/pdo) for databased work. Make sure that the PDO extension is activated and you know how to use PDO.
+The model class used [PDO](http://de2.php.net/pdo) for databased work. Make sure that the PDO extension is activated and you know how to use them.
 
 Access the database layer in your models with `$this->db`.
 
@@ -289,16 +289,16 @@ The first line register the home url (e.g. http://example.com). The controller i
 
 This works for `post` same. The route is only triggered by a post request.
 
-##### Parameters
+##### Arguments
 
-Use parameters in your routes with `{}`:
+Use arguments in your routes with `{}`:
 
 ```php
 $route->get('/show/{id}', 'TaskController@show');
 $route->get('/api/{first}-{second}-{third}', 'APIController@update');
 ```
 
-In your methods you need to enter the same number of parameters. Name they as you want, but they must in the same order.
+In your methods you need to enter the same number of arguments. Name they as you want, but they must in the same order.
 
 ##### Resource
 
@@ -320,9 +320,9 @@ POST | /user | store
 POST | /user/{param} | update
 POST | /user/{param}/delete | destroy
 
-This resource point to the `UserController` controller. This is a convention. The framework used the parameter from `resource` and transformed it in `NameController`. Other example: `$route->resource('book')` are pointed to the `BookController`.
+This resource point to the `UserController` controller. This is a convention. The framework used the argument from `resource` and transformed it in `NameController`. Other example: `$route->resource('book')` are pointed to the `BookController`.
 
-If you want to call your controller something different, use the second parameter. Don't pass a method:
+If you want to call your controller something different, use the second argument. Don't pass a method:
 
 ```php
 $route->resource('lost', 'SeriesController');
@@ -330,7 +330,7 @@ $route->resource('lost', 'SeriesController');
 
 ##### Anonymous functions as callback
 
-Use anonymous functions as callback in your routings. Currently you **need** to pass a parameter. With them you can access your normal controller methods like `view()`, `share()` or `redirect()`.
+Use anonymous functions as callback in your routings. Currently you **need** to pass a argument. With them you can access your normal controller methods like `view()`, `share()` or `redirect()`.
 
 ```php
 $route->get('/hello', function($c) {
@@ -338,7 +338,7 @@ $route->get('/hello', function($c) {
 });
 ```
 
-If you need code auto completion for the available methods in your IDE, type hinting the full `Controller` class for the parameter:
+If you need code auto completion for the available methods in your IDE, type hinting the full `Controller` class for the argument:
 
 ```php
 $route->get('/hello', function(vume\Controller $c) {
@@ -347,11 +347,11 @@ $route->get('/hello', function(vume\Controller $c) {
 });
 ```
 
-**Warning:** Optional parameters are currently not supported.
+**Warning:** Optional arguments are currently not supported.
 
 **Planned:**
 * Exceptions for `resource`.
-* Parameters for anonymous functions.
+* Arguments for anonymous functions.
 * PUT, PATCH and DELETE.
 
 ## Redirect
@@ -389,7 +389,7 @@ You can validate the users input in your controllers with `$this->validate(input
 
 **Caution:** Currently it validates only **required** fields.
 
-You can pass the `$_POST` variable in the parameter. Or a array with desired fields.
+You can pass the `$_POST` variable in the argument. Or a array with desired fields.
 
 ```php
 public function store()
@@ -446,7 +446,7 @@ There is a helper function to avoid this: `inputOld()`:
 <textarea name="description" placeholder="Required"><?php echo inputOld('description'); ?></textarea>
 ```
 
-If the field has no errors (e.g. by first load of this form), you can store a default value: `inputOld('name', 'default value')`. The first parameter need the same value as `name=` from the input/textarea field.
+If the field has no errors (e.g. by first load of this form), you can store a default value: `inputOld('name', 'default value')`. The first argument need the same value as `name=` from the input/textarea field.
 
 **Planned:**
 * More validation rules. 
@@ -487,7 +487,7 @@ autoCache($file);
 c($name);
 
 // Alias for htmlspecialchars($_POST[$input], ENT_QUOTES, 'UTF-8').
-// Set the second parameter to false if you do not need escaping.
+// Set the second argument to false if you do not need escaping.
 input($input = null, $escape = true);
 
 // Alias for redirect()->to().
