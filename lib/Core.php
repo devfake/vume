@@ -22,9 +22,11 @@
       $this->phpErrors();
       $this->autoloadModels();
       // $this->autoloadExceptions();
+      $this->loadLibs();
 
       require 'Session.php';
       require 'Helpers.php';
+      require '../app/helpers.php';
       require 'View.php';
       require 'Redirect.php';
       require 'Validate.php';
@@ -129,5 +131,17 @@
     private function autoloadExceptions()
     {
       // Todo: Make it work for multiple autoloader.
+    }
+
+    /**
+     * Loads and require external libs (no-composer packages).
+     */
+    private function loadLibs()
+    {
+      $libFiles = array_slice(scandir(libs_path), 2);
+
+      foreach($libFiles as $lib) {
+        require libs_path . $lib;
+      }
     }
   }

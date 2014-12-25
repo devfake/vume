@@ -14,7 +14,7 @@
 
 ## Overview
 
-Current version: 0.3.6
+Current version: 0.3.7
 
 ##### Be careful
 
@@ -37,6 +37,8 @@ An example for a typical MAMP installation: `http://localhost:8888/vume/public/`
 Make sure that the `RewriteBase` in the `.htaccess` file (public folder) is correct. This must point to the public directory too. An example for a typical MAMP installation: `RewriteBase /vume/public`.
 
 Check out the [Basic Taskapp Demo](http://80.240.132.120/vume/vume_taskapp.zip) to see the code in a small app.
+
+Store non-composer packages in `app/libs`. You can access them in your Controllers, Views and Models.
 
 ## Config
 
@@ -505,3 +507,5 @@ inputOld($name, $default = null);
 // Alias for $_SESSION[].
 session($keys = null);
 ```
+
+In `app/helpers.php` you can store your own helper functions for your app related code. You can access them in your Controllers, Views and Models.

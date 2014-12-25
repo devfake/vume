@@ -8,5 +8,6 @@
     'controller_path' => __DIR__ . '/../app/controllers/',
     'lib_path' => __DIR__ . '/../lib/',
     'config_path' => __DIR__ . '/',
+    'libs_path' => __DIR__ . '/../app/libs/',
 
   ];
