@@ -35,7 +35,7 @@
         $url = 'http://' . $url;
       }
 
-      if( ! preg_match("#^(?:https?://)?(?:[a-z0-9-]+\.)*((?:[a-z0-9-]+\.)[a-z]+|localhost)#", $url)) {
+      if( ! preg_match("#^(http(s?):\/\/)?(((www\.)?+[a-zA-Z0-9\.\-\_]+(\.[a-zA-Z]{2,3}))|(\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b))|localhost|(\/[a-zA-Z0-9\_\-\s\.\/\?\%\#\&\=]*)?$#", $url)) {
         //throw new \NoValidURLException();
         echo $url . ' is not a valid url.';
         exit;
