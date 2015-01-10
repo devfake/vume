@@ -332,7 +332,7 @@ $route->resource('lost', 'SeriesController');
 
 ##### Anonymous functions as callback
 
-Use anonymous functions as callback in your routings. Currently you **need** to pass a argument. With them you can access your normal controller methods like `view()`, `share()` or `redirect()`.
+Use anonymous functions as callback in your routings. Currently you **need** to pass a parameter. With them you can access your normal controller methods like `view()`, `share()` or `redirect()`.
 
 ```php
 $route->get('/hello', function($c) {
@@ -340,7 +340,7 @@ $route->get('/hello', function($c) {
 });
 ```
 
-If you need code auto completion for the available methods in your IDE, type hinting the full `Controller` class for the argument:
+If you need code auto completion for the available methods in your IDE, type hinting the full `Controller` class to the parameter:
 
 ```php
 $route->get('/hello', function(vume\Controller $c) {
