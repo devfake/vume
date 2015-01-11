@@ -14,7 +14,7 @@
 
 ## Overview
 
-Current version: 0.3.7
+Current version: 0.3.8
 
 ##### Be careful
 
