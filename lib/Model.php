@@ -33,7 +33,10 @@
     public function __construct()
     {
       if(DATABASE) {
-        $this->db = new PDO(DRIVER . ':host=' . HOST . ';dbname=' . DB, USER, PW, [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ, PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
+
+        $errmode = DEBUG ? PDO::ERRMODE_EXCEPTION : PDO::ERRMODE_SILENT;
+
+        $this->db = new PDO(DRIVER . ':host=' . HOST . ';dbname=' . DB, USER, PW, [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ, PDO::ATTR_ERRMODE => $errmode]);
       }
 
       // Is no value for table specified in a subclass, the name of the model is taken.
